@@ -45,8 +45,12 @@
                 "href": "https://my-site.com/api/v2/tables/TAB0001"},
                 {
                 "rel": "metadata",
-                "href": "https://my-site.com/api/v2/tables/TAB0001/metadata"},
-                {
+                "type": "application/vnd.px+json",
+                "href": "https://my-site.com/api/v2/tables/TAB0001/metadata?type=px"},
+                    {
+                "rel": "metadata",
+                "type": "application/vnd.jsonstat+json",
+                "href": "https://my-site.com/api/v2/tables/TAB0001/metadata?type=jsonstat"},            {
                 "rel": "data",
                 "href": "https://my-site.com/api/v2/tables/TAB0001/data"}]
     }
