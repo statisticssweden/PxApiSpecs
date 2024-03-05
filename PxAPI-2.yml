@@ -168,7 +168,30 @@ paths:
           $ref: '#/components/responses/ErrorResponse404'            
         '429':
           $ref: '#/components/responses/ErrorResponse429'
-                            
+
+  /tables/{id}/defaultselection:
+    get:
+      tags:
+        - Table
+      summary: Get the default selection for Table by {id}.
+      description: Get information about what is selected for the table by default when no selection is made i the /data endpoint.
+      operationId: GetDefaultSelection
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelectionResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse400'
+        '404':
+          $ref: '#/components/responses/ErrorResponse404'            
+        '429':
+          $ref: '#/components/responses/ErrorResponse429'                            
  
   /codelists/{id}:
     get:
@@ -436,7 +459,23 @@ components:
           items:
             $ref: '#/components/schemas/VariableSelection'  
           
-
+    SelectionResponse: 
+      type: object
+      required:
+        - "language"
+        - "selection"
+        - "links"
+      properties:
+        language:
+          type: string
+          description: The language code for the language used in this response
+          example: sv
+        selection:
+          $ref: '#/components/schemas/VariablesSelection'
+        links: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
 
     VariableSelection:
       type: object
